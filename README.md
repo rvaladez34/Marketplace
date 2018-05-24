@@ -28,7 +28,7 @@ How do you feel about coding an exercise as a step in the interview process?
 Answer: 8
 
 What would you change in the exercise and/or process?
-Answer: If you want to see more coding and less design more of the application framework can be given
+Answer: If you want to see more coding samples and less design work, then more of the application framework should be given
 
 
 Database tables
