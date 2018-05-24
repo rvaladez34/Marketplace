@@ -1,0 +1,274 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Intuit - Projects and Bids",
+		"_postman_id": "45b1106b-64da-4205-cc54-f63185ff5c85",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get  Project",
+			"request": {
+				"url": "http://localhost:8080/projects/{{projectId}}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get project by projectId"
+			},
+			"response": [
+				{
+					"id": "54d28251-1562-4d9c-a944-e6f40d0eb1a9",
+					"name": "Get  Project (no bids)",
+					"originalRequest": {
+						"url": "http://localhost:8080/projects/{{projectId}}",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 18 May 2018 05:30:09 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 632,
+					"body": "{\"id\":0,\"seller\":{\"name\":\"Peter\",\"email\":\"peter.parker@avengers.com\"},\"description\":\"First project on the marketplace\",\"maxBudget\":{\"value\":200,\"formated\":\"$200.00\"},\"closingDate\":\"2018-05-20\"}"
+				}
+			]
+		},
+		{
+			"name": "Create  Project",
+			"request": {
+				"url": "http://localhost:8080/projects/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"seller\": {\n        \"name\": \"John\",\n        \"email\": \"john.lavander@flowers.com\"\n    },\n    \"description\": \"Need help moving large amounts of flowers\",\n    \"maxBudget\": {\n        \"value\": 2000\n    },\n    \"closingDate\": \"2018-07-10\"\n}"
+				},
+				"description": "Create project from data in body\n\nbody:\n\n{\n    \"seller\": {\n        \"name\": \"John\",\n        \"email\": \"john.lavander@flowers.com\"\n    },\n    \"description\": \"Need help moving large amounts of flowers\",\n    \"maxBudget\": {\n        \"value\": 2000.00\n    },\n    \"closingDate\": \"2018-07-10\"\n}\n\nDateFormat: YYYY-MM-DD\nDescription: 15 - 200 characters. Only alpha numerical spaces and \".\", \"-\" allowed"
+			},
+			"response": [
+				{
+					"id": "2592eec2-695b-4d8d-95e0-11a8edf9d807",
+					"name": "Create  Project",
+					"originalRequest": {
+						"url": "http://localhost:8080/projects/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"seller\": {\n        \"name\": \"John\",\n        \"email\": \"john.lavander@flowers.com\"\n    },\n    \"description\": \"Need help moving large amounts of flowers\",\n    \"maxBudget\": {\n        \"value\": 2000\n    },\n    \"closingDate\": \"2018-07-10\"\n}"
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 18 May 2018 04:37:31 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 79,
+					"body": "{\"id\":3,\"seller\":{\"name\":\"John\",\"email\":\"john.lavander@flowers.com\"},\"description\":\"Need help moving large amounts of flowers\",\"maxBudget\":{\"value\":2000,\"formated\":\"$2,000.00\"},\"closingDate\":\"2018-07-10\"}"
+				}
+			]
+		},
+		{
+			"name": "Bid on Project",
+			"request": {
+				"url": "http://localhost:8080/projects/{{projectId}}/bids/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"buyer\": {\n        \"name\": \"Randy\",\n        \"email\": \"randy.brown@handymen.io\"\n    },\n    \"amount\": {\n        \"value\": 120\n    }\n}"
+				},
+				"description": "Submit a new fixed bid on an existing project. Bid is from body\n\nbody:\n{\n    \"buyer\": {\n        \"name\": \"Manny\",\n        \"email\": \"manny.brown@handymen.com\"\n    },\n    \"amount\": {\n        \"value\": 170.0\n    }\n}\n\n$10 is the bid increment amount\n\nYour bid must be at least $10 lower than current bid amount"
+			},
+			"response": [
+				{
+					"id": "7176c8ae-c9d8-4bc2-a8f8-3683bc3426e9",
+					"name": "Fixed Bid on Project",
+					"originalRequest": {
+						"url": "http://localhost:8080/projects/{{projectId}}/bids/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"buyer\": {\n        \"name\": \"Manny\",\n        \"email\": \"manny.brown@handymen.com\"\n    },\n    \"amount\": {\n        \"value\": 190.0\n    }\n}"
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 18 May 2018 05:31:50 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 233,
+					"body": "{\"id\":0,\"seller\":{\"name\":\"Peter\",\"email\":\"peter.parker@avengers.com\"},\"description\":\"First project on the marketplace\",\"maxBudget\":{\"value\":200,\"formated\":\"$200.00\"},\"closingDate\":\"2018-05-20\",\"lowestBid\":{\"buyer\":{\"name\":\"Manny\",\"email\":\"manny.brown@handymen.com\"},\"amount\":{\"value\":190.0,\"formated\":\"$190.00\"}},\"allBids\":[{\"buyer\":{\"name\":\"Manny\",\"email\":\"manny.brown@handymen.com\"},\"amount\":{\"value\":190.0,\"formated\":\"$190.00\"}}]}"
+				}
+			]
+		},
+		{
+			"name": "Auto Bid on Project",
+			"request": {
+				"url": "http://localhost:8080/projects/{{projectId}}/bids/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"buyer\": {\n        \"name\": \"Autobot\",\n        \"email\": \"auto@bo.uk\"\n    },\n    \"autoBid\": {\n        \"value\": 150.00\n    }\n}"
+				},
+				"description": "Submit an auto bid. Bid is from body.\n\nbody:\n{\n    \"buyer\": {\n        \"name\": \"Autobot2\",\n        \"email\": \"auto2@bo.uk\"\n    },\n    \"autoBid\": {\n        \"value\": 150.00\n    }\n}\n\n$10 is the bid increment amount\n\nAuto bid must be at least $10 lower than current bid amount \n\t\nThe system will bid for you by the bid increment amount or until your auto bid amount is reached or out bid"
+			},
+			"response": [
+				{
+					"id": "fc220f6c-4b9e-482e-b9b9-b9b811ce41db",
+					"name": "Auto Bid on Project",
+					"originalRequest": {
+						"url": "http://localhost:8080/projects/{{projectId}}/bids/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"buyer\": {\n        \"name\": \"Autobot\",\n        \"email\": \"auto@bo.uk\"\n    },\n    \"autoBid\": {\n        \"value\": 150.00\n    }\n}"
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 18 May 2018 05:32:56 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "transfer-encoding",
+							"key": "transfer-encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"responseTime": 32,
+					"body": "{\"id\":0,\"seller\":{\"name\":\"Peter\",\"email\":\"peter.parker@avengers.com\"},\"description\":\"First project on the marketplace\",\"maxBudget\":{\"value\":200,\"formated\":\"$200.00\"},\"closingDate\":\"2018-05-20\",\"lowestBid\":{\"buyer\":{\"name\":\"Autobot\",\"email\":\"auto@bo.uk\"},\"amount\":{\"value\":180.0,\"formated\":\"$180.00\"},\"autoBid\":{\"value\":150.00,\"formated\":\"$150.00\"}},\"allBids\":[{\"buyer\":{\"name\":\"Autobot\",\"email\":\"auto@bo.uk\"},\"amount\":{\"value\":180.0,\"formated\":\"$180.00\"},\"autoBid\":{\"value\":150.00,\"formated\":\"$150.00\"}},{\"buyer\":{\"name\":\"Manny\",\"email\":\"manny.brown@handymen.com\"},\"amount\":{\"value\":190.0,\"formated\":\"$190.00\"}}]}"
+				}
+			]
+		}
+	]
+}
