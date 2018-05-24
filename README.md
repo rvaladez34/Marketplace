@@ -7,7 +7,7 @@ Includes
 How to run: mvn spring-boot:run
 
 API Documentation
-_________________
+--------
 
 Please find all API requirements in the link below
 
@@ -15,8 +15,8 @@ https://documenter.getpostman.com/view/137574/intuit-projects-and-bids/RW86MANY
 
 If link does not work the documentation is in /resource/API_Documentation.postman_collection.json
 
-Assignment
-__________
+Assignment Review
+--------
 
 Exercise Difficulty
 Answer: Moderate
